@@ -6,6 +6,7 @@ use Illuminate\Support\Manager;
 use AlgoliaSearch\Client as Algolia;
 use Laravel\Scout\Engines\NullEngine;
 use Laravel\Scout\Engines\AlgoliaEngine;
+use Laravel\Scout\Engines\SolrEngine;
 
 class EngineManager extends Manager
 {
@@ -30,6 +31,20 @@ class EngineManager extends Manager
         return new AlgoliaEngine(new Algolia(
             config('scout.algolia.id'), config('scout.algolia.secret')
         ));
+    }
+
+    /**
+     * Create an Solr engine instance.
+     *
+     * @return \Laravel\Scout\Engines\SolrEngine
+     */
+    public function createSolrDriver()
+    {
+        $client = new \Solarium\Client(array(
+        'endpoint' => array(
+            'localhost' => config('scout.solr'))
+        ));
+        return new SolrEngine($client);
     }
 
     /**
