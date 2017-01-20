@@ -44,7 +44,7 @@
     },
     "suggest": {
         "algolia/algoliasearch-client-php": "Required to use the Algolia engine (^1.10).",
-        "solarium/solarium": "Required to use the Solr engine.",
+        "solarium/solarium": "Required to use the Solr engine."
     },
     "minimum-stability": "dev",
     "prefer-stable": true
